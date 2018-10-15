@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/backgroundlogin"
+        android:scaleType="fitXY"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_weight="1.2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_marginVertical="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/sleepanlystext"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sleep Analyzer"
+                    android:textColor="#F95F62"
+                    android:textSize="22dp"
+                    android:layout_gravity="center"
+                    />
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_weight="1.2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            >
+
+        <LinearLayout
+            android:id="@+id/fromLogin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/login_layout"
+            android:layout_marginHorizontal="20dp"
+            android:orientation="vertical"
+            android:layout_marginBottom="30dp"
+            android:paddingHorizontal="15dp"
+            android:paddingBottom="40dp"
+            android:paddingTop="15dp"
+            >
+            
+            <EditText
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/login_layout"
+                android:backgroundTint="#fff"
+                android:hint="E-mail"
+                android:textColorHint="#919090"
+                android:textColor="#000"
+                android:paddingHorizontal="15dp"
+                android:layout_margin="5dp"/>
+
+            <EditText
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/login_layout"
+                android:backgroundTint="#fff"
+                android:hint="Password"
+                android:textColorHint="#919090"
+                android:textColor="#000"
+                android:paddingHorizontal="15dp"
+                android:layout_margin="5dp"/>
+
+        </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="50dp"
+                android:layout_alignParentBottom="true"
+                android:layout_height="60dp"
+                android:text="Signup"
+                android:background="@drawable/login_layout"
+                android:backgroundTint="#FFB3BA"/>
+
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_weight="0.8"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingTop="15dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Don't have an account ?"
+                android:textColor="#5A6978"
+                android:layout_gravity="center"
+
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="50dp"
+                android:layout_height="60dp"
+                android:text="Signup"
+                android:layout_gravity="center"
+                android:background="@drawable/login_layout"
+                android:layout_marginTop="15dp"
+                android:backgroundTint="#BAE1FF"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</RelativeLayout>
