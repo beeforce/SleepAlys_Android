@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/backgroundlogin"
+        android:scaleType="fitXY"
+        />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <LinearLayout
+                android:id="@+id/fromLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/login_layout"
+                android:layout_marginHorizontal="20dp"
+                android:orientation="vertical"
+                android:layout_marginBottom="30dp"
+                android:paddingHorizontal="15dp"
+                android:paddingBottom="60dp"
+                android:paddingTop="15dp"
+                android:layout_centerVertical="true"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="25dp"
+                    android:layout_gravity="center"
+                    android:text="Register"
+                    android:textColor="#fff"
+                    android:layout_marginBottom="15dp"
+                    />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:backgroundTint="#fff"
+                    android:hint="E-mail"
+                    android:textColorHint="#fff"
+                    android:textColor="#fff"
+                    android:paddingHorizontal="15dp"
+                    android:layout_margin="5dp"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:backgroundTint="#fff"
+                    android:hint="Password"
+                    android:textColorHint="#fff"
+                    android:textColor="#fff"
+                    android:paddingHorizontal="15dp"
+                    android:layout_margin="5dp"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:backgroundTint="#fff"
+                    android:hint="Password confirm"
+                    android:textColorHint="#fff"
+                    android:textColor="#fff"
+                    android:paddingHorizontal="15dp"
+                    android:layout_margin="5dp"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:backgroundTint="#fff"
+                    android:hint="Name"
+                    android:textColorHint="#fff"
+                    android:textColor="#fff"
+                    android:paddingHorizontal="15dp"
+                    android:layout_margin="5dp"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:backgroundTint="#fff"
+                    android:hint="Date of Birth"
+                    android:textColorHint="#fff"
+                    android:textColor="#fff"
+                    android:paddingHorizontal="15dp"
+                    android:layout_margin="5dp"/>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="50dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="-60dp"
+                android:text="Submit"
+                android:textAllCaps="false"
+                android:textSize="18dp"
+                android:background="@drawable/login_layout"
+                android:layout_below="@+id/fromLogin"
+                android:backgroundTint="#FFB3BA"/>
+
+
+
+        </RelativeLayout>
+
+
+
+
+</RelativeLayout>

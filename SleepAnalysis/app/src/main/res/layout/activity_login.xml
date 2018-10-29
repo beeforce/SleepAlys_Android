@@ -96,11 +96,14 @@
         </LinearLayout>
 
             <Button
+                android:id="@+id/signIn"
                 android:layout_width="match_parent"
                 android:layout_marginHorizontal="50dp"
                 android:layout_alignParentBottom="true"
                 android:layout_height="60dp"
-                android:text="Signup"
+                android:text="Signin"
+                android:textAllCaps="false"
+                android:textSize="18dp"
                 android:background="@drawable/login_layout"
                 android:backgroundTint="#FFB3BA"/>
 
@@ -124,13 +127,16 @@
 
                 />
             <Button
+                android:id="@+id/signUp"
                 android:layout_width="match_parent"
                 android:layout_marginHorizontal="50dp"
                 android:layout_height="60dp"
                 android:text="Signup"
+                android:textAllCaps="false"
                 android:layout_gravity="center"
                 android:background="@drawable/login_layout"
                 android:layout_marginTop="15dp"
+                android:textSize="18dp"
                 android:backgroundTint="#BAE1FF"
                 />
 

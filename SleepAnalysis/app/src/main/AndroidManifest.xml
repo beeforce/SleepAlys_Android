@@ -24,7 +24,9 @@
         <!-- /> -->
 
         <activity android:name=".AlarmScreen" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".Main2Activity" />
+        <activity android:name=".signUpActivity"></activity>
     </application>
 
 </manifest>
