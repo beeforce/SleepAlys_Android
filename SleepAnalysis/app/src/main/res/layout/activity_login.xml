@@ -19,7 +19,7 @@
         android:orientation="vertical">
 
         <RelativeLayout
-            android:layout_weight="1.2"
+            android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
@@ -51,7 +51,7 @@
 
 
         <RelativeLayout
-            android:layout_weight="1.2"
+            android:layout_weight="1.5"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             >
@@ -68,30 +68,48 @@
             android:paddingBottom="40dp"
             android:paddingTop="15dp"
             >
-            
-            <EditText
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:background="@drawable/login_layout"
-                android:backgroundTint="#fff"
-                android:hint="E-mail"
-                android:textColorHint="#919090"
-                android:textColor="#000"
-                android:paddingHorizontal="15dp"
-                android:layout_margin="5dp"/>
 
-            <EditText
-                android:layout_weight="1"
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/emailTextlayout"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:background="@drawable/login_layout"
-                android:backgroundTint="#fff"
-                android:hint="Password"
-                android:textColorHint="#919090"
-                android:textColor="#000"
-                android:paddingHorizontal="15dp"
-                android:layout_margin="5dp"/>
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp"
+                android:layout_margin="5dp">
+
+
+                <EditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="#fff"
+                    android:hint="E-mail"
+                    android:textColorHint="#fff"
+                    android:inputType="textEmailAddress"
+                    android:textColor="#fff" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/passwordTextlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp"
+                android:layout_margin="5dp"
+                android:layout_marginTop="-10dp"
+                app:passwordToggleEnabled="true">
+
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="#fff"
+                    android:hint="Password"
+                    android:inputType="textWebPassword"
+                    android:textColorHint="#fff"
+                    android:textColor="#fff" />
+
+            </android.support.design.widget.TextInputLayout>
+
 
         </LinearLayout>
 
@@ -112,7 +130,7 @@
         </RelativeLayout>
 
         <LinearLayout
-            android:layout_weight="0.8"
+            android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:paddingTop="15dp"
@@ -135,9 +153,18 @@
                 android:textAllCaps="false"
                 android:layout_gravity="center"
                 android:background="@drawable/login_layout"
-                android:layout_marginTop="15dp"
+                android:layout_marginVertical="15dp"
                 android:textSize="18dp"
                 android:backgroundTint="#BAE1FF"
+                />
+
+            <TextView
+                android:id="@+id/forgetPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Forgot a Password ?"
+                android:textColor="#5A6978"
+                android:layout_gravity="center"
                 />
 
         </LinearLayout>

@@ -43,55 +43,111 @@
                     android:layout_marginBottom="15dp"
                     />
 
-                <EditText
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/emailTextlayout"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="5dp"
+                    android:paddingHorizontal="10dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_margin="5dp">
+
+
+                <EditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:backgroundTint="#fff"
                     android:hint="E-mail"
                     android:textColorHint="#fff"
-                    android:textColor="#fff"
-                    android:paddingHorizontal="15dp"
-                    android:layout_margin="5dp"/>
+                    android:inputType="textEmailAddress"
+                    android:textColor="#fff" />
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:backgroundTint="#fff"
-                    android:hint="Password"
-                    android:textColorHint="#fff"
-                    android:textColor="#fff"
-                    android:paddingHorizontal="15dp"
-                    android:layout_margin="5dp"/>
+                </android.support.design.widget.TextInputLayout>
 
-                <EditText
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/passwordTextlayout"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:backgroundTint="#fff"
-                    android:hint="Password confirm"
-                    android:textColorHint="#fff"
-                    android:textColor="#fff"
-                    android:paddingHorizontal="15dp"
-                    android:layout_margin="5dp"/>
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="5dp"
+                    android:paddingHorizontal="10dp"
+                    android:layout_margin="5dp"
+                    app:passwordToggleEnabled="true">
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:backgroundTint="#fff"
-                    android:hint="Name"
-                    android:textColorHint="#fff"
-                    android:textColor="#fff"
-                    android:paddingHorizontal="15dp"
-                    android:layout_margin="5dp"/>
+                    <EditText
+                        android:id="@+id/password"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="#fff"
+                        android:hint="Password"
+                        android:inputType="textWebPassword"
+                        android:textColorHint="#fff"
+                        android:textColor="#fff" />
 
-                <EditText
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/passwordagainTextlayout"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:backgroundTint="#fff"
-                    android:hint="Date of Birth"
-                    android:textColorHint="#fff"
-                    android:textColor="#fff"
-                    android:paddingHorizontal="15dp"
-                    android:layout_margin="5dp"/>
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="5dp"
+                    android:paddingHorizontal="10dp"                    android:layout_margin="5dp"
+                    app:passwordToggleEnabled="true">
+
+                    <EditText
+                        android:id="@+id/passwordagain"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="#fff"
+                        android:hint="Password Confirm"
+                        android:inputType="textWebPassword"
+                        android:textColorHint="#fff"
+                        android:textColor="#fff" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/nameTextlayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="5dp"
+                    android:paddingHorizontal="10dp"
+                    android:layout_margin="5dp">
+
+                    <EditText
+                        android:id="@+id/nameText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="#fff"
+                        android:hint="Name"
+                        android:inputType="text"
+                        android:textColorHint="#fff"
+                        android:textColor="#fff" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/birthdatelayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="5dp"
+                    android:paddingHorizontal="10dp"
+                    android:layout_margin="5dp">
+
+                    <EditText
+                        android:id="@+id/birthdate"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="#fff"
+                        android:hint="Date of Birth"
+                        android:imeOptions="actionGo"
+                        android:inputType="text"
+                        android:textColor="#fff"
+                        android:textColorHint="#fff" />
+
+                </android.support.design.widget.TextInputLayout>
+
+
 
             </LinearLayout>
 

@@ -3,6 +3,8 @@
     package="com.example.buri_paoton.sleepanalysis">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
 
     <application
         android:allowBackup="true"
@@ -26,7 +28,8 @@
         <activity android:name=".AlarmScreen" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Main2Activity" />
-        <activity android:name=".signUpActivity"></activity>
+        <activity android:name=".signUpActivity" />
+        <activity android:name=".ForgotPassword"></activity>
     </application>
 
 </manifest>
