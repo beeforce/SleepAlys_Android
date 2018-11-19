@@ -4,14 +4,14 @@
     <item
         android:id="@+id/action_upcoming"
         android:enabled="true"
-        android:icon="@drawable/alarmclock"
+        android:icon="@drawable/stopwatch"
         android:title=""
         app:showAsAction="ifRoom">
     </item>
     <item
         android:id="@+id/action_listening"
         android:enabled="true"
-        android:icon="@drawable/stopwatch"
+        android:icon="@drawable/alarmclock"
         android:title=""
         app:showAsAction="ifRoom"        />
     <item

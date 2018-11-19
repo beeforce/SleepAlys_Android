@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFB3BA"
+        tools:context=".EditProfile"
+        >
+
+        <FrameLayout
+            android:id="@+id/contentContainer2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Profile"
+                    android:textColor="#fff"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:textStyle="bold"
+                    android:textSize="25dp"/>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="30dp">
+
+
+                    <LinearLayout
+                        android:id="@+id/fromLogin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/login_layout"
+                        android:layout_marginHorizontal="45dp"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="15dp"
+                        android:paddingBottom="40dp"
+                        android:paddingTop="45dp"
+                        android:backgroundTint="#fff"
+                        android:layout_below="@+id/profileImage"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sleepy@Analyer.com"
+                            android:textSize="20dp"
+                            android:layout_gravity="center"
+                            android:textColor="#000"
+                            />
+
+                        <android.support.design.widget.TextInputLayout
+                            android:id="@+id/passwordTextlayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingVertical="5dp"
+                            android:paddingHorizontal="10dp"
+                            android:layout_margin="5dp"
+                            app:passwordToggleEnabled="true">
+
+                            <EditText
+                                android:id="@+id/password"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:backgroundTint="#000"
+                                android:hint="Password"
+                                android:textSize="18dp"
+                                android:inputType="textWebPassword"
+                                android:textColorHint="#000000"
+                                android:textColor="#000000" />
+
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:id="@+id/passwordagainTextlayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingVertical="5dp"
+                            android:paddingHorizontal="10dp"
+                            android:layout_margin="5dp"
+                            app:passwordToggleEnabled="true">
+
+                            <EditText
+                                android:id="@+id/passwordagain"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:backgroundTint="#000"
+                                android:hint="Password Confirm"
+                                android:inputType="textWebPassword"
+                                android:textColorHint="#000"
+                                android:textColor="#000" />
+
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:id="@+id/nameTextlayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingVertical="5dp"
+                            android:paddingHorizontal="10dp"
+                            android:layout_margin="5dp">
+
+                            <EditText
+                                android:id="@+id/nameText"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:backgroundTint="#000"
+                                android:hint="Name"
+                                android:inputType="text"
+                                android:textColorHint="#000"
+                                android:text="Name"
+                                android:textColor="#000" />
+
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:id="@+id/birthdatelayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingVertical="5dp"
+                            android:paddingHorizontal="10dp"
+                            android:layout_margin="5dp">
+
+                            <EditText
+                                android:id="@+id/birthdate"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:backgroundTint="#000"
+                                android:hint="Date of Birth"
+                                android:imeOptions="actionGo"
+                                android:inputType="text"
+                                android:textColor="#000"
+                                android:text="Date of Birth"
+                                android:textColorHint="#000" />
+
+                        </android.support.design.widget.TextInputLayout>
+
+
+                    </LinearLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/profileImage"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginBottom="-30dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/oval_button">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/user_image_white"
+                            android:padding="10dp"
+                            android:layout_centerInParent="true"/>
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/fromLogin"
+                        android:layout_marginTop="-30dp"
+                        android:paddingRight="55dp"
+                        >
+
+                    </RelativeLayout>
+
+
+
+                </RelativeLayout>
+                <Button
+                    android:id="@+id/ok"
+                    android:layout_width="250dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:text="OK"
+                    android:textSize="22dp"
+                    android:background="@drawable/logoutbuttonstyle"
+                    android:textColor="#FDFDA8"
+                    android:textAllCaps="false"
+                    android:layout_marginBottom="30dp"
+                    android:focusable="false"
+                    />
+
+
+
+            </LinearLayout>
+        </FrameLayout>
+
+    </ScrollView>

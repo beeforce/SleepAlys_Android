@@ -13,7 +13,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
+import com.example.buri_paoton.sleepanalysis.EditProfile;
 import com.example.buri_paoton.sleepanalysis.LoginActivity;
 import com.example.buri_paoton.sleepanalysis.R;
 import com.example.buri_paoton.sleepanalysis.signUpActivity;
@@ -34,6 +36,14 @@ public class profileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), LoginActivity.class));
+            }
+        });
+
+        RelativeLayout editProfile = rootView.findViewById(R.id.editProfileButton);
+        editProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), EditProfile.class));
             }
         });
 

@@ -7,8 +7,6 @@ import android.os.Vibrator;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Patterns;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -17,22 +15,20 @@ import android.widget.EditText;
 
 import com.ontbee.legacyforks.cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class signUpActivity extends AppCompatActivity {
+public class EditProfile extends AppCompatActivity {
 
     private Vibrator vibrator;
     private Animation anim;
-    private EditText email, password, repassword, name, birthdate;
-    private TextInputLayout emailTextlayout, passwordTextlayout, passwordagainTextlayout, nameTextlayout,
-                            birthdateTextlayout;
+    private EditText password, repassword, name, birthdate;
+    private TextInputLayout passwordTextlayout, passwordagainTextlayout, nameTextlayout,
+            birthdateTextlayout;
 
     private SweetAlertDialog pDialog;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
+        setContentView(R.layout.activity_edit_profile);
 
         //Animation
         anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.anim_shake);
@@ -42,34 +38,26 @@ public class signUpActivity extends AppCompatActivity {
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
         //TextinputLayout
-        emailTextlayout =  findViewById(R.id.emailTextlayout);
         passwordTextlayout =  findViewById(R.id.passwordTextlayout);
         passwordagainTextlayout =  findViewById(R.id.passwordagainTextlayout);
         nameTextlayout = findViewById(R.id.nameTextlayout);
         birthdateTextlayout = findViewById(R.id.birthdatelayout);
 
         //EditText
-        email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         repassword = findViewById(R.id.passwordagain);
         name = findViewById(R.id.nameText);
         birthdate = findViewById(R.id.birthdate);
 
-
-
-
-        Button submit = findViewById(R.id.submit);
-        submit.setOnClickListener(new View.OnClickListener() {
+        Button ok = findViewById(R.id.ok);
+        ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (!checkEmail() || !checkpassword() || !checkpasswordagain() || !checkname() || !checkbirthdate()) {
-                    email.setAnimation(anim);
+                if (!checkpassword() || !checkpasswordagain() || !checkname() || !checkbirthdate()) {
                     password.setAnimation(anim);
                     repassword.setAnimation(anim);
                     name.setAnimation(anim);
                     birthdate.setAnimation(anim);
-                    checkEmail();
                     checkpassword();
                     checkpasswordagain();
                     checkname();
@@ -81,26 +69,6 @@ public class signUpActivity extends AppCompatActivity {
                 }
             }
         });
-
-    }
-
-    public final static boolean isValidEmail(CharSequence target) {
-        return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
-    }
-
-    private boolean checkEmail() {
-        if (email.getText().toString().trim().isEmpty()) {
-            emailTextlayout.setErrorEnabled(true);
-            emailTextlayout.setError("Please input Email!!");
-            return false;
-        }
-        if (!isValidEmail(email.getText().toString())) {
-            emailTextlayout.setErrorEnabled(true);
-            emailTextlayout.setError("Please input a correct Email!!");
-            return false;
-        }
-        emailTextlayout.setErrorEnabled(false);
-        return true;
     }
 
     private boolean checkpassword() {
@@ -146,15 +114,13 @@ public class signUpActivity extends AppCompatActivity {
     }
     private void showProgressDialogSuccessRegister() {
         pDialog = new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE);
-        pDialog.setTitleText("Register Successfully!!");
+        pDialog.setTitleText("Update Completed!!");
         pDialog.show();
         pDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialog) {
-                startActivity(new Intent(signUpActivity.this, Main2Activity.class));
-                    finish();
+                finish();
             }
         });
     }
-
 }

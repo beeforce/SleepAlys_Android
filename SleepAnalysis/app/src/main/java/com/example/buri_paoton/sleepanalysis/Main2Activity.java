@@ -155,8 +155,8 @@ public class Main2Activity extends AppCompatActivity {
 
         SectionPageAdapter adapter = new SectionPageAdapter(getSupportFragmentManager());
 
-        adapter.addFragment(alarmClockFragment);
         adapter.addFragment(sleepTimeFragment);
+        adapter.addFragment(alarmClockFragment);
         adapter.addFragment(graphFragment);
         adapter.addFragment(historyFragment);
         adapter.addFragment(profileFragment);

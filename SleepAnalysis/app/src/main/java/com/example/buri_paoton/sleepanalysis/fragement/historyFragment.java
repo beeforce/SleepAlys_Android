@@ -10,14 +10,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.buri_paoton.sleepanalysis.R;
 
 
 public class historyFragment extends Fragment {
+    Button tag1, tag2, tag3, tag4;
 
-    private RecyclerView.LayoutManager layoutManager;
-    private RecyclerView recyclerView;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -30,11 +31,109 @@ public class historyFragment extends Fragment {
 
     private void initInstances(View rootView) {
 
-        recyclerView = rootView.findViewById(R.id.recyclerView);
-        layoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setHasFixedSize(true);
+        tag1 = rootView.findViewById(R.id.tag1);
+        tag2 = rootView.findViewById(R.id.tag2);
+        tag3 = rootView.findViewById(R.id.tag3);
+        tag4 = rootView.findViewById(R.id.tag4);
+
+        tag1.setSelected(true);
+
+        initOnclick();
+
+    }
+
+    private void initOnclick(){
+        tag1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!tag1.isSelected()) {
+                    tag1.setSelected(true);
+                    if (tag2.isSelected()){
+                        tag2.setSelected(false);
+                        tag2.setPressed(false);
+                    }
+                    if (tag3.isSelected()){
+                        tag3.setSelected(false);
+                        tag3.setPressed(false);
+                    }
+                    if (tag4.isSelected()) {
+                        tag4.setSelected(false);
+                        tag4.setPressed(false);
+                    }
+
+                }
+
+            }
+        });
+
+        tag2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!tag2.isSelected()) {
+                    tag2.setSelected(true);
+                    if (tag1.isSelected()){
+                        tag1.setSelected(false);
+                        tag1.setPressed(false);
+                    }
+                    if (tag3.isSelected()){
+                        tag3.setSelected(false);
+                        tag3.setPressed(false);
+                    }
+                    if (tag4.isSelected()) {
+                        tag4.setSelected(false);
+                        tag4.setPressed(false);
+                    }
+
+                }
+
+            }
+        });
+
+        tag3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!tag3.isSelected()) {
+                    tag3.setSelected(true);
+                    if (tag1.isSelected()){
+                        tag1.setSelected(false);
+                        tag1.setPressed(false);
+                    }
+                    if (tag2.isSelected()){
+                        tag2.setSelected(false);
+                        tag2.setPressed(false);
+                    }
+                    if (tag4.isSelected()) {
+                        tag4.setSelected(false);
+                        tag4.setPressed(false);
+                    }
+
+                }
+
+            }
+        });
+
+        tag4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!tag4.isSelected()) {
+                    tag4.setSelected(true);
+                    if (tag1.isSelected()){
+                        tag1.setSelected(false);
+                        tag1.setPressed(false);
+                    }
+                    if (tag2.isSelected()){
+                        tag2.setSelected(false);
+                        tag2.setPressed(false);
+                    }
+                    if (tag3.isSelected()) {
+                        tag3.setSelected(false);
+                        tag3.setPressed(false);
+                    }
+
+                }
+
+            }
+        });
 
     }
 }

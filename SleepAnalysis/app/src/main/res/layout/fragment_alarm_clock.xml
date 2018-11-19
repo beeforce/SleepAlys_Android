@@ -26,24 +26,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sleeping Time"
+                    android:text="Alarm Clock"
                     android:textColor="#fff"
                     android:textSize="25dp"
-                    android:layout_gravity="center"/>
-
-                <TimePicker
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:timePickerMode="spinner"
-                    android:layout_gravity="center">
-
-                </TimePicker>
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Start"
-                    android:textColor="#fff"
+                    android:textStyle="bold"
                     android:layout_gravity="center"/>
 
             </LinearLayout>

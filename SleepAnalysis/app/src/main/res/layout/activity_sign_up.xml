@@ -162,6 +162,7 @@
                 android:textSize="18dp"
                 android:background="@drawable/login_layout"
                 android:layout_below="@+id/fromLogin"
+                android:focusable="false"
                 android:backgroundTint="#FFB3BA"/>
 
 

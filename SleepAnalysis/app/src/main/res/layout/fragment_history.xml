@@ -2,35 +2,114 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#fff">
 
     <FrameLayout
         android:id="@+id/contentContainer2"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/refresh"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-
-            <android.support.v4.widget.SwipeRefreshLayout
-                android:id="@+id/refresh"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/recyclerView"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#B4FDC4"
-                    android:scrollbars="vertical" />
+                    android:background="#FFB3BA"
+                    android:paddingVertical="20dp"
+                    android:orientation="vertical">
 
 
-            </android.support.v4.widget.SwipeRefreshLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="History"
+                        android:textColor="#fff"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+                        android:textSize="25dp"/>
 
-        </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:orientation="horizontal"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center"
+                        >
+
+                        <Button
+                            android:id="@+id/tag1"
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:background="@drawable/tags_button_statistic"
+                            android:layout_marginHorizontal="5dp"
+                            android:text="T"
+                            android:textColor="#353b48"
+                            android:textSize="32dp"
+                            android:textStyle="bold"
+                            />
+
+                        <Button
+                            android:id="@+id/tag2"
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:background="@drawable/tags_button_statistic"
+                            android:layout_marginHorizontal="5dp"
+                            android:text="H"
+                            android:textColor="#353b48"
+                            android:textSize="32dp"
+                            android:textStyle="bold"
+                            />
+
+                        <Button
+                            android:id="@+id/tag3"
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:background="@drawable/tags_button_statistic"
+                            android:layout_marginHorizontal="5dp"
+                            android:text="N"
+                            android:textColor="#353b48"
+                            android:textSize="32dp"
+                            android:textStyle="bold"
+                            />
+
+                        <Button
+                            android:id="@+id/tag4"
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:background="@drawable/tags_button_statistic"
+                            android:layout_marginHorizontal="5dp"
+                            android:text="V"
+                            android:textColor="#353b48"
+                            android:textSize="32dp"
+                            android:textStyle="bold"
+                            />
+
+
+                    </LinearLayout>
+
+
+
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
     </FrameLayout>
 
 </RelativeLayout>
