@@ -78,6 +78,8 @@ public class sleepTimeFragment extends Fragment {
     // the method for when we press the 'stop' button
     public void stopButtonClick(){
         if (!stopClicked)  {
+            chronometer.stop();
+            stopClicked = true;
             timeWhenStopped = chronometer.getBase() - SystemClock.elapsedRealtime();
             int seconds = (int) (timeWhenStopped / 1000) % 60;
             int minutes = (int) ((timeWhenStopped / (1000*60)) % 60);
@@ -87,10 +89,10 @@ public class sleepTimeFragment extends Fragment {
             String hoursString = Integer.toString(Math.abs(hours));
 
 
-//            if (seconds < 10){
-//                secondsString = "0"+secondsString;
-//            }
-            if (minutes < 10){
+            if (Math.abs(seconds) < 10){
+                secondsString = "0"+secondsString;
+            }
+            if (Math.abs(minutes) < 10){
                 minuteString = "0"+minuteString;
             }
             if (hours < 10){
@@ -99,8 +101,7 @@ public class sleepTimeFragment extends Fragment {
 
 
             secondsText.setText(hoursString+"::"+minuteString+"::"+secondsString);
-            chronometer.stop();
-            stopClicked = true;
+
         }
     }
 

@@ -55,13 +55,6 @@
                     android:layout_marginTop="15dp"
                     />
 
-                <TextView
-                    android:id="@+id/hmsTekst"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textColor="#fff"
-                    />
 
             </LinearLayout>
 
@@ -72,10 +65,11 @@
                 android:padding="20dp">
 
                 <LinearLayout
-                    android:layout_weight="1"
+                    android:layout_weight="1.1"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:background="#BAE1FF"
+                    android:background="@drawable/login_layout"
+                    android:backgroundTint="#BAE1FF"
                     android:layout_marginBottom="7dp"
                     android:orientation="vertical"
                     >
@@ -94,15 +88,61 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        
-                        <TextView
-                            android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="20dp"
+                        android:layout_marginTop="10dp"
+                        >
+
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Your Birth Date"
-                            android:textColor="#343F4B"
-                            android:textStyle="bold"
-                            android:layout_marginTop="10dp"/>
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Your Birth Date"
+                                android:textColor="#343F4B"
+                                android:textSize="16dp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="20/04/1998"
+                                android:textColor="#343F4B"
+                                android:textSize="16dp"
+                                />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:gravity="center"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Your age"
+                                android:textColor="#343F4B"
+                                android:textSize="16dp"
+                                android:textStyle="bold"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="20"
+                                android:textColor="#343F4B"
+                                android:textSize="16dp"
+                                />
+
+                        </LinearLayout>
+
                     </LinearLayout>
 
                 </LinearLayout>
@@ -111,8 +151,55 @@
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:background="#B4FDC4"
+                    android:background="@drawable/login_layout"
+                    android:backgroundTint="#B4FDC4"
                     android:layout_marginBottom="7dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingHorizontal="20dp"
+                        >
+
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Quality Time"
+                                android:textColor="#343F4B"
+                                android:textStyle="bold"
+                                android:textSize="18dp"/>
+
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:orientation="vertical">
+                            <TextView
+                                android:id="@+id/hmsTekst"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="00:00:00"
+                                android:textColor="#343F4B"
+                                android:textSize="18dp"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
 
 
                 </LinearLayout>
@@ -121,7 +208,57 @@
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:background="#FDFDA8">
+                    android:background="@drawable/login_layout"
+                    android:backgroundTint="#FDFDA8"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingHorizontal="20dp"
+                        >
+
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Sleep Hour Suggestion"
+                                android:textColor="#343F4B"
+                                android:textAlignment="center"
+                                android:textStyle="bold"
+                                android:textSize="18dp"/>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="7 Hours 40 Minute"
+                                android:textColor="#343F4B"
+                                android:textSize="18dp" />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
 
                 </LinearLayout>
 
