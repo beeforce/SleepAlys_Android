@@ -75,6 +75,7 @@
                     >
 
                     <TextView
+                        android:id="@+id/user_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="[Name]"
@@ -109,6 +110,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                                android:id="@+id/user_birthday"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="20/04/1998"
@@ -134,6 +136,7 @@
                                 android:textSize="16dp"
                                 android:textStyle="bold"/>
                             <TextView
+                                android:id="@+id/user_age"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="20"

@@ -16,7 +16,19 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.buri_paoton.sleepanalysis.network.AccessToken;
+import com.example.buri_paoton.sleepanalysis.network.ApiService;
+import com.example.buri_paoton.sleepanalysis.network.ApiUtils;
 import com.ontbee.legacyforks.cn.pedant.SweetAlert.SweetAlertDialog;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ForgotPassword extends AppCompatActivity {
 
@@ -25,6 +37,8 @@ public class ForgotPassword extends AppCompatActivity {
     private EditText email;
     private TextInputLayout emailTextlayout;
     private SweetAlertDialog pDialog;
+    private ApiService mAPIService;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,13 +63,36 @@ public class ForgotPassword extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                showProgressDialogloading();
                 if (!checkEmail()) {
                     email.setAnimation(anim);
                     checkEmail();
                     vibrator.vibrate(120);
                     return;
                 } else {
-                    showProgressDialogSuccessRegister();
+                    mAPIService = ApiUtils.getAPIService();
+                    String emails = email.getText().toString();
+
+                    RequestBody email = RequestBody.create(MultipartBody.FORM, emails);
+                    mAPIService.resetUserpassword(email).enqueue(new Callback<AccessToken>() {
+                        @Override
+                        public void onResponse(Call<AccessToken> call, Response<AccessToken> response) {
+                            dismissProgressDialogloading();
+                            if (response.body().isSuccess()){
+                                showProgressDialogSuccessRegister();
+                            }else {
+                                showProgressDialogEmailnotCorrect();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<AccessToken> call, Throwable t) {
+                            dismissProgressDialogloading();
+                            showProgressDialogfailconnection();
+                        }
+                    });
+
+
                 }
             }
         });
@@ -84,7 +121,7 @@ public class ForgotPassword extends AppCompatActivity {
 
     private void showProgressDialogSuccessRegister() {
         pDialog = new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE);
-        pDialog.setTitleText("Send to email  Successfully!!");
+        pDialog.setTitleText("Send to email Successfully!!");
         pDialog.show();
         pDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
@@ -94,4 +131,39 @@ public class ForgotPassword extends AppCompatActivity {
             }
         });
     }
+
+    private void showProgressDialogEmailnotCorrect() {
+        pDialog = new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE);
+        pDialog.setTitleText("Email is not Correct!!");
+        pDialog.show();
+        pDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                pDialog.dismiss();
+            }
+        });
+    }
+
+    private void showProgressDialogfailconnection() {
+        pDialog = new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE);
+        pDialog.setTitleText("Connection Failed!!");
+        pDialog.show();
+        pDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                pDialog.dismiss();
+            }
+        });
+    }
+
+    private void showProgressDialogloading() {
+        pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
+        pDialog.setTitleText("Sending Email");
+        pDialog.show();
+    }
+
+    private void dismissProgressDialogloading() {
+        pDialog.dismiss();
+    }
+
 }

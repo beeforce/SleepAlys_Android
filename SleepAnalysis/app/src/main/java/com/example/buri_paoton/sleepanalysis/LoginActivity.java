@@ -8,6 +8,7 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.view.animation.Animation;
@@ -16,7 +17,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.buri_paoton.sleepanalysis.model.user;
+import com.example.buri_paoton.sleepanalysis.network.AccessToken;
+import com.example.buri_paoton.sleepanalysis.network.ApiService;
+import com.example.buri_paoton.sleepanalysis.network.ApiUtils;
 import com.ontbee.legacyforks.cn.pedant.SweetAlert.SweetAlertDialog;
+
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -25,6 +36,11 @@ public class LoginActivity extends AppCompatActivity {
     private EditText email, password;
     private TextInputLayout emailTextlayout, passwordTextlayout;
     private SweetAlertDialog pDialog;
+
+    private ApiService mAPIService;
+    private Call<AccessToken> call;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +76,34 @@ public class LoginActivity extends AppCompatActivity {
                     vibrator.vibrate(120);
                     return;
                 } else {
-                    showProgressDialogSuccessRegister();
+                    mAPIService = ApiUtils.getAPIService();
+                    String emails = email.getText().toString();
+                    String passwords = password.getText().toString();
+
+                    RequestBody emailR = RequestBody.create(MultipartBody.FORM, emails);
+                    RequestBody passwordR = RequestBody.create(MultipartBody.FORM, passwords);
+
+
+                    mAPIService.login(emailR, passwordR).enqueue(new Callback<AccessToken>() {
+                        @Override
+                        public void onResponse(Call<AccessToken> call, Response<AccessToken> response) {
+                            if (response.body().isSuccess()){
+                                user user = new user();
+                                user.setUser_id(response.body().getUser_id());
+                                Log.e("login", "onResponse: " + response.body().getUser_id() );
+                                showProgressDialogSuccessRegister();
+                            }else {
+                                showProgressDialogLoginfail();
+                            }
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<AccessToken> call, Throwable t) {
+                            showProgressDialogfailconnection();
+
+                        }
+                    });
                 }
 
             }
@@ -127,6 +170,30 @@ public class LoginActivity extends AppCompatActivity {
             public void onDismiss(DialogInterface dialog) {
                 startActivity(new Intent(LoginActivity.this, Main2Activity.class));
                 finish();
+            }
+        });
+    }
+
+    private void showProgressDialogLoginfail() {
+        pDialog = new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE);
+        pDialog.setTitleText("Incorrect Email or Password!!");
+        pDialog.show();
+        pDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                pDialog.dismiss();
+            }
+        });
+    }
+
+    private void showProgressDialogfailconnection() {
+        pDialog = new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE);
+        pDialog.setTitleText("Connection Failed!!");
+        pDialog.show();
+        pDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                pDialog.dismiss();
             }
         });
     }

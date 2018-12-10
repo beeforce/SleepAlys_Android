@@ -49,6 +49,7 @@
                 >
 
                 <TextView
+                    android:id="@+id/user_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Sleepy@Analyer.com"
@@ -58,6 +59,7 @@
                     />
 
                 <TextView
+                    android:id="@+id/user_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Name"
@@ -68,6 +70,7 @@
                     />
 
                 <TextView
+                    android:id="@+id/user_birthday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Birth of Date"

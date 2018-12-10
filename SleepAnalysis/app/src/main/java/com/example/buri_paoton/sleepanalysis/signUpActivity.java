@@ -8,6 +8,7 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.view.animation.Animation;
@@ -15,7 +16,17 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.buri_paoton.sleepanalysis.model.user;
+import com.example.buri_paoton.sleepanalysis.network.AccessToken;
+import com.example.buri_paoton.sleepanalysis.network.ApiService;
+import com.example.buri_paoton.sleepanalysis.network.ApiUtils;
 import com.ontbee.legacyforks.cn.pedant.SweetAlert.SweetAlertDialog;
+
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class signUpActivity extends AppCompatActivity {
 
@@ -26,6 +37,8 @@ public class signUpActivity extends AppCompatActivity {
                             birthdateTextlayout;
 
     private SweetAlertDialog pDialog;
+    private ApiService mAPIService;
+    private Call<AccessToken> call;
 
 
 
@@ -77,7 +90,38 @@ public class signUpActivity extends AppCompatActivity {
                     vibrator.vibrate(120);
                     return;
                 } else {
-                    showProgressDialogSuccessRegister();
+                    mAPIService = ApiUtils.getAPIService();
+                    String emails = email.getText().toString();
+                    String passwords = password.getText().toString();
+                    String names = name.getText().toString();
+                    String dateofBirths = birthdate.getText().toString();
+
+                    RequestBody emailR = RequestBody.create(MultipartBody.FORM, emails);
+                    RequestBody passwordR = RequestBody.create(MultipartBody.FORM, passwords);
+                    RequestBody nameR = RequestBody.create(MultipartBody.FORM, names);
+                    RequestBody dateofBirthR = RequestBody.create(MultipartBody.FORM, dateofBirths);
+
+                    mAPIService.register(emailR, passwordR, nameR, dateofBirthR).enqueue(new Callback<AccessToken>() {
+                        @Override
+                        public void onResponse(Call<AccessToken> call, Response<AccessToken> response) {
+                            if (response.body().isSuccess()){
+                                user user = new user();
+                                user.setUser_id(response.body().getUser_id());
+                                Log.e("register", "onResponse: " + response.body().getMessage() );
+                                showProgressDialogSuccessRegister();
+                            }
+                            else {
+                                showProgressDialogEmailexist();
+
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<AccessToken> call, Throwable t) {
+                            showProgressDialogfailconnection();
+                        }
+                    });
+
                 }
             }
         });
@@ -153,6 +197,29 @@ public class signUpActivity extends AppCompatActivity {
             public void onDismiss(DialogInterface dialog) {
                 startActivity(new Intent(signUpActivity.this, Main2Activity.class));
                     finish();
+            }
+        });
+    }
+    private void showProgressDialogEmailexist() {
+        pDialog = new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE);
+        pDialog.setTitleText("Email already exists!!");
+        pDialog.show();
+        pDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                pDialog.dismiss();
+            }
+        });
+    }
+
+    private void showProgressDialogfailconnection() {
+        pDialog = new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE);
+        pDialog.setTitleText("Connection Failed!!");
+        pDialog.show();
+        pDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                pDialog.dismiss();
             }
         });
     }
