@@ -40,6 +40,10 @@ public class LoginActivity extends AppCompatActivity {
     private ApiService mAPIService;
     private Call<AccessToken> call;
 
+    @Override
+    public void onBackPressed() {
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

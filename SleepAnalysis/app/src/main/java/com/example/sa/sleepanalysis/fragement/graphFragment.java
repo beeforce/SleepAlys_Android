@@ -17,6 +17,7 @@ import com.example.sa.sleepanalysis.network.ApiUtils;
 import com.github.mikephil.charting.charts.LineChart;
 import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
@@ -161,38 +162,42 @@ public class graphFragment extends Fragment {
                         statsArray[i] = new DataPoint(mydate.getTime(), Double.parseDouble(nodeDataList.get(i).getTemperature()));
                         // i+1  to start from x = 1
                     }
+
+                    LineGraphSeries<DataPoint> series = new LineGraphSeries<>(statsArray);
+                    // set manual X bounds
+                    graph.getViewport().setXAxisBoundsManual(true);
+                    Date lastDate = fromStringToDate(nodeDataList.get(nodeDataList.size()-1).getCreated_at(), "yyyy-MM-dd HH:mm:ss");
+                    graph.getViewport().setMaxX(lastDate.getTime()+10000000);
+                    Date firstDate = fromStringToDate(nodeDataList.get(0).getCreated_at(), "yyyy-MM-dd HH:mm:ss");
+                    graph.getViewport().setMinX(firstDate.getTime()-20000000);
+                    graph.addSeries(series);
+                    graph.setTitle("Temperature");
+                    graph.setTitleColor(Color.parseColor("#000000"));
+                    graph.getGridLabelRenderer().setGridColor(Color.parseColor("#000000"));
+                    graph.getGridLabelRenderer().setHorizontalLabelsColor(Color.parseColor("#000000"));
+                    graph.getGridLabelRenderer().setVerticalLabelsColor(Color.parseColor("#000000"));
+                    graph.setTitleTextSize(55);
+                    graph.getGridLabelRenderer().setNumHorizontalLabels(5);
+//                graph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(getContext()));
+
+                    graph.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
+                        @Override
+                        public String formatLabel(double value, boolean isValueX) {
+                            if (isValueX) {
+                                return sdf.format(new Date((long) value));
+                            }
+                            return super.formatLabel(value, isValueX);
+                        }
+                    });
                 }else{
                     // Query return nothing, so we add some fake point
                     // IT WON'T BE VISIBLE cus we starts graph from 1
-                    statsArray = new DataPoint[] {new DataPoint(0, 0)};
+//                    statsArray = new DataPoint[] {new DataPoint(0, 0)};
+                    graph.setTitle("No data available");
+                    graph.setTitleColor(Color.parseColor("#000000"));
                 }
 
-                LineGraphSeries<DataPoint> series = new LineGraphSeries<>(statsArray);
-                // set manual X bounds
-                graph.getViewport().setXAxisBoundsManual(true);
-                Date lastDate = fromStringToDate(nodeDataList.get(nodeDataList.size()-1).getCreated_at(), "yyyy-MM-dd HH:mm:ss");
-                graph.getViewport().setMaxX(lastDate.getTime());
-                Date firstDate = fromStringToDate(nodeDataList.get(0).getCreated_at(), "yyyy-MM-dd HH:mm:ss");
-                graph.getViewport().setMinX(1.0);
-//                graph.getViewport().setMaxX(nodeDataList.size());
-                graph.addSeries(series);
-                graph.setCursorMode(true);
-                graph.setTitle("Temperature");
-                graph.setTitleColor(Color.parseColor("#000000"));
-                graph.getGridLabelRenderer().setGridColor(Color.parseColor("#000000"));
-                graph.getGridLabelRenderer().setHorizontalLabelsColor(Color.parseColor("#000000"));
-                graph.getGridLabelRenderer().setVerticalLabelsColor(Color.parseColor("#000000"));
-                graph.setTitleTextSize(55);
-//                graph.getGridLabelRenderer().setNumHorizontalLabels(1);
-                graph.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
-                    @Override
-                    public String formatLabel(double value, boolean isValueX) {
-                        if (isValueX) {
-                            return sdf.format(new Date((long) value));
-                        }
-                        return super.formatLabel(value, isValueX);
-                    }
-                });
+
             }
 
             @Override
