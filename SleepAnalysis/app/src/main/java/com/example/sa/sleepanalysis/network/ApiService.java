@@ -43,7 +43,7 @@ public interface ApiService {
     Call<List<NodeData>> getHistorybyDate(@Query("userID") int user_id, @Query("fromDate") String fromDate, @Query("toDate") String toDate);
 
     @GET("getHistory.php")
-    Call<List<NodeData>> getHistorybyHours(@Query("userID") int user_id, @Query("hours") int hours);
+    Call<List<NodeData>> getHistorybyHours(@Query("userID") int user_id, @Query("hours") int hours, @Query("minutes") int minutes);
 
     @POST("addSleepingHours.php")
     @Multipart

@@ -45,6 +45,18 @@ public class Userdetail implements Serializable {
         @Expose
         String name;
 
+        public String getPassword() {
+            return password;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
+
+        @SerializedName("password")
+        @Expose
+        String password;
+
         @SerializedName("age")
         @Expose
         int age;

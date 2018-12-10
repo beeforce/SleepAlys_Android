@@ -142,6 +142,8 @@ public class EditProfile extends AppCompatActivity {
 
                 name.setText(response.body().getData().getName());
                 email.setText(response.body().getData().getEmail());
+                password.setText(response.body().getData().getPassword());
+                repassword.setText(response.body().getData().getPassword());
 
                 Date mydate = fromStringToDate(response.body().getData().getDateofBirth(), "yyyy-MM-dd HH:mm:ss");
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");

@@ -88,12 +88,48 @@
                     </LinearLayout>
 
                 </LinearLayout>
-                <com.jjoe64.graphview.GraphView
-                    android:layout_margin="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:seriesColor="#000"
-                    android:id="@+id/graph" />
+
+                <LinearLayout
+                    android:id="@+id/temperature"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <com.jjoe64.graphview.GraphView
+                        android:layout_margin="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:seriesColor="#000"
+                        app:seriesType="line"
+                        android:id="@+id/graph" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/humidity"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+                    <com.jjoe64.graphview.GraphView
+                        android:layout_margin="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:seriesColor="#000"
+                        app:seriesType="line"
+                        android:id="@+id/graph2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/vibration"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+                    <com.jjoe64.graphview.GraphView
+                        android:layout_margin="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:seriesColor="#000"
+                        app:seriesType="line"
+                        android:id="@+id/graph3" />
+                </LinearLayout>
+
 
 
             </LinearLayout>

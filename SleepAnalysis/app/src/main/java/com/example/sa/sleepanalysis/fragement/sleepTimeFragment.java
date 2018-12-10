@@ -39,7 +39,7 @@ public class sleepTimeFragment extends Fragment {
     private boolean stopClicked;
     private TextView secondsText;
     private ApiService mAPIService;
-    private TextView name, dateofBirth, age;
+    private TextView name, dateofBirth, age, sleepTime;
     private user user = new user();
     private List<NodeData> nodeDataList;
 
@@ -64,6 +64,7 @@ public class sleepTimeFragment extends Fragment {
         name = rootView.findViewById(R.id.user_name);
         dateofBirth = rootView.findViewById(R.id.user_birthday);
         age = rootView.findViewById(R.id.user_age);
+        sleepTime = rootView.findViewById(R.id.sleepSuggest);
 
         getuserDetail(user.getUser_id());
 //        Log.e("user id", "initInstances: "+ user.getUser_id() );
@@ -112,6 +113,19 @@ public class sleepTimeFragment extends Fragment {
                 dateofBirth.setText(sdf.format(mydate.getTime()));
 
                 age.setText(""+response.body().getData().getAge());
+                if (response.body().getData().getAge() >= 0 && response.body().getData().getAge() <=2){
+                    sleepTime.setText("11-14 Hours");
+                }else if (response.body().getData().getAge() >= 3 && response.body().getData().getAge() <=5){
+                    sleepTime.setText("10-13 Hours");
+                }else if (response.body().getData().getAge() >= 6 && response.body().getData().getAge() <=13){
+                    sleepTime.setText("9-11 Hours");
+                }else if (response.body().getData().getAge() >= 14 && response.body().getData().getAge() <=17){
+                    sleepTime.setText("8-10 Hours");
+                }else if (response.body().getData().getAge() >= 18 && response.body().getData().getAge() <=25){
+                    sleepTime.setText("7-9 Hours");
+                }else {
+                        sleepTime.setText("7-8 Hours");
+                }
 
             }
 
@@ -137,7 +151,7 @@ public class sleepTimeFragment extends Fragment {
             public void onResponse(Call<AccessToken> call, Response<AccessToken> response) {
                 if (response.body().isSuccess()){
                     Log.e("add sleeping hour", "onResponse: "+ response.body().getMessage() );
-                    getHistorybyHours(userId, "4.30");
+                    getHistorybyHours(userId, "10.30");
                 }
                 else{
                     Log.e("add sleeping hour", "onResponse: "+ response.body().getMessage() );
@@ -157,14 +171,20 @@ public class sleepTimeFragment extends Fragment {
         mAPIService = ApiUtils.getAPIService();
         String[] parts = hours.split(Pattern.quote("."));
         String part1 = parts[0];
-        mAPIService.getHistorybyHours(user_id, Integer.parseInt(part1)).enqueue(new Callback<List<NodeData>>() {
+        String part2 = parts[1];
+        mAPIService.getHistorybyHours(user_id, Integer.parseInt(part1), Integer.parseInt(part1)).enqueue(new Callback<List<NodeData>>() {
             @Override
             public void onResponse(Call<List<NodeData>> call, Response<List<NodeData>> response) {
                 nodeDataList = response.body();
-                for (NodeData each: nodeDataList) {
-                    Log.e("getHistory", each.getHumidity() );
+                if (nodeDataList.isEmpty()){
 
+                }else {
+                    for (NodeData each: nodeDataList) {
+                        Log.e("getHistory", each.getHumidity() );
+
+                    }
                 }
+
 
             }
 

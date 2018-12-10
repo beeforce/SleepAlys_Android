@@ -69,6 +69,7 @@
                             android:paddingVertical="5dp"
                             android:paddingHorizontal="10dp"
                             android:layout_margin="5dp"
+                            app:passwordToggleTint="#000"
                             app:passwordToggleEnabled="true">
 
                             <EditText
@@ -79,6 +80,7 @@
                                 android:hint="Password"
                                 android:textSize="18dp"
                                 android:inputType="textWebPassword"
+
                                 android:textColorHint="#000000"
                                 android:textColor="#000000" />
 
@@ -91,6 +93,7 @@
                             android:paddingVertical="5dp"
                             android:paddingHorizontal="10dp"
                             android:layout_margin="5dp"
+                            app:passwordToggleTint="#000"
                             app:passwordToggleEnabled="true">
 
                             <EditText
