@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.buri_paoton.sleepanalysis">
+    package="com.example.sa.sleepanalysis">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".LoginActivity">
+        <activity android:name="com.example.sa.sleepanalysis.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,12 +26,12 @@
         <!-- android:excludeFromRecents="true" -->
         <!-- /> -->
 
-        <activity android:name=".AlarmScreen" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".Main2Activity" />
-        <activity android:name=".signUpActivity" />
-        <activity android:name=".ForgotPassword" />
-        <activity android:name=".EditProfile"></activity>
+        <activity android:name="com.example.sa.sleepanalysis.AlarmScreen" />
+        <activity android:name="com.example.sa.sleepanalysis.MainActivity" />
+        <activity android:name="com.example.sa.sleepanalysis.Main2Activity" />
+        <activity android:name="com.example.sa.sleepanalysis.signUpActivity" />
+        <activity android:name="com.example.sa.sleepanalysis.ForgotPassword" />
+        <activity android:name="com.example.sa.sleepanalysis.EditProfile"></activity>
     </application>
 
 </manifest>
