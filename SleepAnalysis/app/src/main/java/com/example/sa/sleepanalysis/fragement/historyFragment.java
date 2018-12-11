@@ -1,5 +1,6 @@
 package com.example.sa.sleepanalysis.fragement;
 
+import android.app.DatePickerDialog;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,7 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.sa.sleepanalysis.R;
 import com.example.sa.sleepanalysis.model.NodeData;
@@ -19,8 +22,12 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import org.w3c.dom.Text;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -33,9 +40,11 @@ public class historyFragment extends Fragment {
     private Button tag1, tag2, tag4;
     private GraphView graph, graph2, graph3;
     private ApiService mAPIService;
-    private List<NodeData> nodeDataList;
+    private List<NodeData> nodeDataList = new ArrayList<NodeData>();
     private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM");
     private LinearLayout temperature, humidity, vibration;
+    private TextView toDate, fromDate;
+    private String fromDatestring = "", toDatestring = "";
 
 
 
@@ -69,8 +78,72 @@ public class historyFragment extends Fragment {
         graph2 = rootView.findViewById(R.id.graph2);
         graph3 = rootView.findViewById(R.id.graph3);
 
-        user user = new user();
-        getHistoryData(user.getUser_id(), "20181210", "20181210");
+        fromDate = rootView.findViewById(R.id.fromDate);
+        toDate = rootView.findViewById(R.id.toDate);
+
+        fromDate.setClickable(true);
+        fromDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar mcurrentDate = Calendar.getInstance();
+                int mYear = mcurrentDate.get(Calendar.YEAR);
+                int mMonth = mcurrentDate.get(Calendar.MONTH);
+                int mDay = mcurrentDate.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog mDatePicker;
+                mDatePicker = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+                    public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
+                        // TODO Auto-generated method stub
+                        /*      Your code   to get date and time    */
+                        selectedmonth = selectedmonth + 1;
+                        fromDate.setText("" + selectedday + "/" + selectedmonth + "/" + selectedyear);
+                        fromDatestring = "" + selectedyear + "" + selectedmonth + "" + selectedday;
+                    }
+                }, mYear, mMonth, mDay);
+                mDatePicker.setTitle("Select Date");
+                mDatePicker.show();
+
+            }
+        });
+
+        toDate.setClickable(true);
+        toDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar mcurrentDate = Calendar.getInstance();
+                int mYear = mcurrentDate.get(Calendar.YEAR);
+                int mMonth = mcurrentDate.get(Calendar.MONTH);
+                int mDay = mcurrentDate.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog mDatePicker;
+                mDatePicker = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+                    public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
+                        // TODO Auto-generated method stub
+                        /*      Your code   to get date and time    */
+                        selectedmonth = selectedmonth + 1;
+                        toDate.setText("" + selectedday + "/" + selectedmonth + "/" + selectedyear);
+                        toDatestring = "" + selectedyear + "" + selectedmonth + "" + selectedday;
+
+                    }
+                }, mYear, mMonth, mDay);
+                mDatePicker.setTitle("Select Date");
+                mDatePicker.show();
+            }
+        });
+
+        Button search = rootView.findViewById(R.id.search);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (fromDatestring != "" && toDatestring != ""){
+                    nodeDataList.removeAll(nodeDataList);
+                    user user = new user();
+                    getHistoryData(user.getUser_id(), fromDatestring, toDatestring);
+                }
+                }
+
+        });
+
 
         initOnclick();
 
@@ -192,12 +265,19 @@ public class historyFragment extends Fragment {
             }
 
     }else{
-        // Query return nothing, so we add some fake point
-        // IT WON'T BE VISIBLE cus we starts graph from 1
-//                    statsArray = new DataPoint[] {new DataPoint(0, 0)};
-        graph.setTitle("No data available");
-        graph.setTitleColor(Color.parseColor("#000000"));
-    }
+
+            graph.setTitle("No data available");
+            graph.setTitleColor(Color.parseColor("#000000"));
+            graph2.setTitle("No data available");
+            graph2.setTitleColor(Color.parseColor("#000000"));
+            graph3.setTitle("No data available");
+            graph3.setTitleColor(Color.parseColor("#000000"));
+            graph.removeAllSeries();
+            graph2.removeAllSeries();
+            graph3.removeAllSeries();
+
+
+        }
     }
 
     private void getHistoryData(int user_id, String fromDate, String toDate) {
