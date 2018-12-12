@@ -1,6 +1,7 @@
 package com.example.sa.sleepanalysis.network;
 
 import com.example.sa.sleepanalysis.model.NodeData;
+import com.example.sa.sleepanalysis.model.SleepTime;
 import com.example.sa.sleepanalysis.model.Userdetail;
 
 import java.util.List;
@@ -41,6 +42,10 @@ public interface ApiService {
 
     @GET("getHistory.php")
     Call<List<NodeData>> getHistorybyDate(@Query("userID") int user_id, @Query("fromDate") String fromDate, @Query("toDate") String toDate);
+
+    @GET("getHistory.php")
+    Call<List<SleepTime>> getQualityTimebyDate(@Query("userID") String user_id, @Query("fromDate") String fromDate, @Query("toDate") String toDate);
+
 
     @GET("getHistory.php")
     Call<List<NodeData>> getHistorybyHours(@Query("userID") int user_id, @Query("hours") int hours, @Query("minutes") int minutes);

@@ -24,6 +24,7 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -39,7 +40,7 @@ public class graphFragment extends Fragment {
     private boolean started = false;
     private Handler handler = new Handler();
     private ApiService mAPIService;
-    private List<NodeData> nodeDataList;
+    private List<NodeData> nodeDataList = new ArrayList<NodeData>();
     private LinearLayout temperature, humidity, vibration;
 
 
@@ -290,8 +291,19 @@ public class graphFragment extends Fragment {
                     // Query return nothing, so we add some fake point
                     // IT WON'T BE VISIBLE cus we starts graph from 1
 //                    statsArray = new DataPoint[] {new DataPoint(0, 0)};
+
                     graph.setTitle("No data available");
                     graph.setTitleColor(Color.parseColor("#000000"));
+                    graph.setTitleTextSize(55);
+                    graph2.setTitle("No data available");
+                    graph2.setTitleColor(Color.parseColor("#000000"));
+                    graph2.setTitleTextSize(55);
+                    graph3.setTitle("No data available");
+                    graph3.setTitleColor(Color.parseColor("#000000"));
+                    graph3.setTitleTextSize(55);
+                    graph.removeAllSeries();
+                    graph2.removeAllSeries();
+                    graph3.removeAllSeries();
                 }
 
 

@@ -21,6 +21,31 @@ public class NodeData implements Serializable{
     @Expose
     String vibration;
 
+    public String getNode_data_id() {
+        return node_data_id;
+    }
+
+    public void setNode_data_id(String node_data_id) {
+        this.node_data_id = node_data_id;
+    }
+
+    public String getUser_Id() {
+        return user_Id;
+    }
+
+    public void setUser_Id(String user_Id) {
+        this.user_Id = user_Id;
+    }
+
+    @SerializedName("node_data_id")
+    @Expose
+    String node_data_id;
+
+
+    @SerializedName("user_Id")
+    @Expose
+    String user_Id;
+
     public String getHumidity() {
         return humidity;
     }

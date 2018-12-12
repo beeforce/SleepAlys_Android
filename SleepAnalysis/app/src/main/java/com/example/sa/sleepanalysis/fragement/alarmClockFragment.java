@@ -112,33 +112,73 @@ public class alarmClockFragment extends Fragment {
                             time = time + (1000 * 60 * 60 * 24);
                     }
                     alarmManager.set(AlarmManager.RTC_WAKEUP, time, pendingIntent);
-                    Date date = new Date();
                     Calendar calendar = Calendar.getInstance();
-                    calendar.setTime(date);
+                    calendar.set(Calendar.HOUR_OF_DAY, alarmHour);
+                    calendar.set(Calendar.MINUTE, alarmMinute);
                     calendar.add(Calendar.HOUR_OF_DAY, -9);
                     calendar.add(Calendar.MINUTE, -15);
-                    suggestTime1.setText( calendar.get(Calendar.HOUR_OF_DAY) + ":" + calendar.get(Calendar.MINUTE));
+                    String minuteString = Integer.toString(calendar.get(Calendar.MINUTE));
+                    String hoursString = Integer.toString(calendar.get(Calendar.HOUR_OF_DAY));
 
-                    Date date2 = new Date();
+                    if (calendar.get(Calendar.MINUTE) < 10){
+                        minuteString = "0"+minuteString;
+                    }
+                    if (calendar.get(Calendar.HOUR_OF_DAY) < 10) {
+                        hoursString = "0" + hoursString;
+                    }
+                    suggestTime1.setText(hoursString + ":" + minuteString);
+
+
                     Calendar calendar2 = Calendar.getInstance();
-                    calendar2.setTime(date2);
+                    calendar2.set(Calendar.HOUR_OF_DAY, alarmHour);
+                    calendar2.set(Calendar.MINUTE, alarmMinute);
                     calendar2.add(Calendar.HOUR_OF_DAY, -7);
                     calendar2.add(Calendar.MINUTE, -45);
-                    suggestTime2.setText( calendar2.get(Calendar.HOUR_OF_DAY) + ":" + calendar2.get(Calendar.MINUTE));
+                    String minuteString2 = Integer.toString(calendar2.get(Calendar.MINUTE));
+                    String hoursString2 = Integer.toString(calendar2.get(Calendar.HOUR_OF_DAY));
 
-                    Date date3 = new Date();
+                    if (calendar2.get(Calendar.MINUTE) < 10){
+                        minuteString2 = "0"+minuteString2;
+                    }
+                    if (calendar2.get(Calendar.HOUR_OF_DAY) < 10) {
+                        hoursString2 = "0" + hoursString2;
+                    }
+                    suggestTime2.setText(hoursString2 + ":" + minuteString2);
+
+
                     Calendar calendar3 = Calendar.getInstance();
-                    calendar3.setTime(date3);
+                    calendar3.set(Calendar.HOUR_OF_DAY, alarmHour);
+                    calendar3.set(Calendar.MINUTE, alarmMinute);
                     calendar3.add(Calendar.HOUR_OF_DAY, -6);
                     calendar3.add(Calendar.MINUTE, -15);
-                    suggestTime3.setText( calendar3.get(Calendar.HOUR_OF_DAY) + ":" + calendar3.get(Calendar.MINUTE));
+                        String minuteString3 = Integer.toString(calendar3.get(Calendar.MINUTE));
+                        String hoursString3 = Integer.toString(calendar3.get(Calendar.HOUR_OF_DAY));
 
-                    Date date4 = new Date();
+                        if (calendar3.get(Calendar.MINUTE) < 10){
+                            minuteString3 = "0"+minuteString3;
+                        }
+                        if (calendar3.get(Calendar.HOUR_OF_DAY) < 10) {
+                            hoursString3 = "0" + hoursString3;
+                        }
+                    suggestTime3.setText(hoursString3 + ":" + minuteString3);
+
+
                     Calendar calendar4 = Calendar.getInstance();
-                    calendar4.setTime(date4);
+                    calendar4.set(Calendar.HOUR_OF_DAY, alarmHour);
+                    calendar4.set(Calendar.MINUTE, alarmMinute);
                     calendar4.add(Calendar.HOUR_OF_DAY, -4);
                     calendar4.add(Calendar.MINUTE, -45);
-                    suggestTime4.setText( calendar4.get(Calendar.HOUR_OF_DAY) + ":" + calendar4.get(Calendar.MINUTE));
+                            String minuteString4 = Integer.toString(calendar4.get(Calendar.MINUTE));
+                            String hoursString4 = Integer.toString(calendar4.get(Calendar.HOUR_OF_DAY));
+
+                            if (calendar4.get(Calendar.MINUTE) < 10){
+                                minuteString4 = "0"+minuteString4;
+                            }
+                            if (calendar4.get(Calendar.HOUR_OF_DAY) < 10) {
+                                hoursString4 = "0" + hoursString4;
+                            }
+                    suggestTime4.setText(hoursString4 + ":" + minuteString4);
+
 
 
                 }
