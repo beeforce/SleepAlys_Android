@@ -252,8 +252,11 @@ public class graphFragment extends Fragment {
                     else if (vibration.getVisibility() == View.VISIBLE){
                         statsArray = new DataPoint[nodeDataList.size()]; // so this is not null now
                         for (int i = 0; i < statsArray.length; i++) {
-                            Date mydate = fromStringToDate(nodeDataList.get(i).getCreated_at(), "yyyy-MM-dd HH:mm:ss");
-                            statsArray[i] = new DataPoint(mydate.getTime(), Double.parseDouble(nodeDataList.get(i).getVibration()));
+                            if (Integer.parseInt(nodeDataList.get(i).getVibration()) > 18){
+                                Date mydate = fromStringToDate(nodeDataList.get(i).getCreated_at(), "yyyy-MM-dd HH:mm:ss");
+                                statsArray[i] = new DataPoint(mydate.getTime(), Double.parseDouble(nodeDataList.get(i).getVibration()));
+                            }
+
                             // i+1  to start from x = 1
                         }
                         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(statsArray);
@@ -348,7 +351,7 @@ public class graphFragment extends Fragment {
 
     public void start() {
         started = true;
-        handler.postDelayed(runnable, 3000);
+        handler.postDelayed(runnable, 1000);
     }
 
     }
