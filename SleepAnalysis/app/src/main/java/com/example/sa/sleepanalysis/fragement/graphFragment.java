@@ -257,11 +257,6 @@ public class graphFragment extends Fragment {
                     }
 
                     else if (vibration.getVisibility() == View.VISIBLE){
-                        for (NodeData each: nodeDataList) {
-                            if (Integer.parseInt(each.getVibration()) <= 18){
-                                each.setVibration("0");
-                            }
-                        }
                         statsArray = new DataPoint[nodeDataList.size()]; // so this is not null now
                         for (int i = 0; i < statsArray.length; i++) {
                                 Date mydate = fromStringToDate(nodeDataList.get(i).getCreated_at(), "yyyy-MM-dd HH:mm:ss");
