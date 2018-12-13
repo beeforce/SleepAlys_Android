@@ -253,16 +253,15 @@ public class graphFragment extends Fragment {
                     }
 
                     else if (vibration.getVisibility() == View.VISIBLE){
-                        List<NodeData> newlist = new ArrayList<NodeData>();
                         for (NodeData each: nodeDataList) {
-                            if (Integer.parseInt(each.getVibration()) > 18){
-                                newlist.add(each);
+                            if (Integer.parseInt(each.getVibration()) <= 18){
+                                each.setVibration("0");
                             }
                         }
-                        statsArray = new DataPoint[newlist.size()]; // so this is not null now
+                        statsArray = new DataPoint[nodeDataList.size()]; // so this is not null now
                         for (int i = 0; i < statsArray.length; i++) {
-                                Date mydate = fromStringToDate(newlist.get(i).getCreated_at(), "yyyy-MM-dd HH:mm:ss");
-                                statsArray[i] = new DataPoint(mydate.getTime(), Double.parseDouble(newlist.get(i).getVibration()));
+                                Date mydate = fromStringToDate(nodeDataList.get(i).getCreated_at(), "yyyy-MM-dd HH:mm:ss");
+                                statsArray[i] = new DataPoint(mydate.getTime(), Double.parseDouble(nodeDataList.get(i).getVibration()));
 
                             // i+1  to start from x = 1
                         }
