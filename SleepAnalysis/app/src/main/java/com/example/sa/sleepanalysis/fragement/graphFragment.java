@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,8 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+
+import org.w3c.dom.Node;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -250,44 +253,48 @@ public class graphFragment extends Fragment {
                     }
 
                     else if (vibration.getVisibility() == View.VISIBLE){
-                        statsArray = new DataPoint[nodeDataList.size()]; // so this is not null now
-                        for (int i = 0; i < statsArray.length; i++) {
-                            if (Integer.parseInt(nodeDataList.get(i).getVibration()) > 18){
-                                Date mydate = fromStringToDate(nodeDataList.get(i).getCreated_at(), "yyyy-MM-dd HH:mm:ss");
-                                statsArray[i] = new DataPoint(mydate.getTime(), Double.parseDouble(nodeDataList.get(i).getVibration()));
+                        List<NodeData> newlist = new ArrayList<NodeData>();
+                        for (NodeData each: nodeDataList) {
+                            if (Integer.parseInt(each.getVibration()) > 18){
+                                newlist.add(each);
                             }
+                        }
+                        statsArray = new DataPoint[newlist.size()]; // so this is not null now
+                        for (int i = 0; i < statsArray.length; i++) {
+                                Date mydate = fromStringToDate(newlist.get(i).getCreated_at(), "yyyy-MM-dd HH:mm:ss");
+                                statsArray[i] = new DataPoint(mydate.getTime(), Double.parseDouble(newlist.get(i).getVibration()));
 
                             // i+1  to start from x = 1
                         }
-                        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(statsArray);
-                        // set manual X bounds
-                        graph3.getViewport().setXAxisBoundsManual(true);
-                        Date lastDate = fromStringToDate(nodeDataList.get(nodeDataList.size()-1).getCreated_at(), "yyyy-MM-dd HH:mm:ss");
-                        graph3.getViewport().setMaxX(lastDate.getTime());
-                        Date firstDate = fromStringToDate(nodeDataList.get(0).getCreated_at(), "yyyy-MM-dd HH:mm:ss");
-                        graph3.getViewport().setMinX(firstDate.getTime());
-                        graph3.addSeries(series);
-                        graph3.setTitle("Vibration");
-                        graph3.setTitleColor(Color.parseColor("#000000"));
-                        graph3.getGridLabelRenderer().setGridColor(Color.parseColor("#000000"));
-                        graph3.getGridLabelRenderer().setHorizontalLabelsColor(Color.parseColor("#000000"));
-                        graph3.getGridLabelRenderer().setVerticalLabelsColor(Color.parseColor("#000000"));
-                        graph3.setTitleTextSize(55);
-                        graph3.getGridLabelRenderer().setNumHorizontalLabels(4);
-                        graph3.getGridLabelRenderer().setHorizontalAxisTitle("Date");
-                        graph3.getGridLabelRenderer().setHumanRounding(true);
-                        graph3.getGridLabelRenderer().setHorizontalAxisTitleColor(Color.parseColor("#000000"));//                graph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(getContext()));
+                            LineGraphSeries<DataPoint> series = new LineGraphSeries<>(statsArray);
+                            // set manual X bounds
+                            graph3.getViewport().setXAxisBoundsManual(true);
+                            Date lastDate = fromStringToDate(nodeDataList.get(nodeDataList.size()-1).getCreated_at()+1000, "yyyy-MM-dd HH:mm:ss");
+                            graph3.getViewport().setMaxX(lastDate.getTime());
+                            Date firstDate = fromStringToDate(nodeDataList.get(0).getCreated_at(), "yyyy-MM-dd HH:mm:ss");
+                            graph3.getViewport().setMinX(firstDate.getTime());
+                            graph3.addSeries(series);
+                            graph3.setTitle("Vibration");
+                            graph3.setTitleColor(Color.parseColor("#000000"));
+                            graph3.getGridLabelRenderer().setGridColor(Color.parseColor("#000000"));
+                            graph3.getGridLabelRenderer().setHorizontalLabelsColor(Color.parseColor("#000000"));
+                            graph3.getGridLabelRenderer().setVerticalLabelsColor(Color.parseColor("#000000"));
+                            graph3.setTitleTextSize(55);
+                            graph3.getGridLabelRenderer().setNumHorizontalLabels(4);
+                            graph3.getGridLabelRenderer().setHorizontalAxisTitle("Date");
+                            graph3.getGridLabelRenderer().setHumanRounding(true);
+                            graph3.getGridLabelRenderer().setHorizontalAxisTitleColor(Color.parseColor("#000000"));//                graph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(getContext()));
 
-                        graph3.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
-                            @Override
-                            public String formatLabel(double value, boolean isValueX) {
-                                if (isValueX) {
-                                    return sdf.format(new Date((long) value));
+                            graph3.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
+                                @Override
+                                public String formatLabel(double value, boolean isValueX) {
+                                    if (isValueX) {
+                                        return sdf.format(new Date((long) value));
+                                    }
+                                    return super.formatLabel(value, isValueX);
                                 }
-                                return super.formatLabel(value, isValueX);
-                            }
-                        });
-                    }
+                            });
+                        }
 
 
                 }else{
