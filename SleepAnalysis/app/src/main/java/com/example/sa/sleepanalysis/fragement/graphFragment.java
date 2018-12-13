@@ -189,10 +189,13 @@ public class graphFragment extends Fragment {
                         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(statsArray);
                         // set manual X bounds
                         graph.getViewport().setXAxisBoundsManual(true);
+                        graph.getViewport().setYAxisBoundsManual(true);
                         Date lastDate = fromStringToDate(nodeDataList.get(nodeDataList.size()-1).getCreated_at(), "yyyy-MM-dd HH:mm:ss");
                         graph.getViewport().setMaxX(lastDate.getTime());
                         Date firstDate = fromStringToDate(nodeDataList.get(0).getCreated_at(), "yyyy-MM-dd HH:mm:ss");
                         graph.getViewport().setMinX(firstDate.getTime());
+                        graph.getViewport().setMinY(10);
+                        graph.getViewport().setMaxY(50);
                         graph.addSeries(series);
                         graph.setTitle("Temperature");
                         graph.setTitleColor(Color.parseColor("#000000"));
@@ -203,7 +206,8 @@ public class graphFragment extends Fragment {
                         graph.getGridLabelRenderer().setNumHorizontalLabels(4);
                         graph.getGridLabelRenderer().setHorizontalAxisTitle("Date");
                         graph.getGridLabelRenderer().setHumanRounding(true);
-                        graph.getGridLabelRenderer().setHorizontalAxisTitleColor(Color.parseColor("#000000"));//                graph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(getContext()));
+                        graph.getGridLabelRenderer().setHorizontalAxisTitleColor(Color.parseColor("#000000"));//
+                        //              graph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(getContext()));
 
                         graph.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
                             @Override
