@@ -269,8 +269,8 @@ public class graphFragment extends Fragment {
                             LineGraphSeries<DataPoint> series = new LineGraphSeries<>(statsArray);
                             // set manual X bounds
                             graph3.getViewport().setXAxisBoundsManual(true);
-                            Date lastDate = fromStringToDate(nodeDataList.get(nodeDataList.size()-1).getCreated_at()+1000, "yyyy-MM-dd HH:mm:ss");
-                            graph3.getViewport().setMaxX(lastDate.getTime());
+                            Date lastDate = fromStringToDate(nodeDataList.get(nodeDataList.size()-1).getCreated_at(), "yyyy-MM-dd HH:mm:ss");
+                            graph3.getViewport().setMaxX(lastDate.getTime()+1000);
                             Date firstDate = fromStringToDate(nodeDataList.get(0).getCreated_at(), "yyyy-MM-dd HH:mm:ss");
                             graph3.getViewport().setMinX(firstDate.getTime());
                             graph3.addSeries(series);
